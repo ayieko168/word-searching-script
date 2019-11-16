@@ -8,9 +8,9 @@ def search_the_word(word_dict, search_word):
            of similar matches found in the list
         RETURN:
             The function returns a dictionary of two keys:
-                do_you_mean = Containing a
+                do_you_mean > Containing a
                  list of possible matches to the sugested word.
-                match = Contains a string value of the match found, it is empty string
+                match > Contains a string value of the match found, it is empty string
                  if no matches are found.
     """
     results = {"do_you_mean": [], "match": ""}
@@ -48,7 +48,7 @@ def search_the_word(word_dict, search_word):
 
         if percentage_score == 100:
             match = word
-        elif (percentage_score >=50) and (percentage_score < 100) and (len(search_word) == ((len(word)+2) or (len(word)-2))):
+        elif (percentage_score >=45) and (percentage_score != 100) and (len(search_word) == (len(word)+3) or (len(word)-3)):
             do_you_mean.append(word)
         elif percentage_score <=10:
             pass

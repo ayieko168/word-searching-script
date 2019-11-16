@@ -1,4 +1,10 @@
 
+search_word = "contents"
+word_dict = ["contents", "concempt", "container", "contempt"]
+names = []
+results = {"do_you_mean": [],
+           "match": ""}
+
 def search_the_word(word_dict, search_word):
     """word_dict => a list of words to search from.
        search_word => a word to search for in the provided list.
@@ -8,12 +14,12 @@ def search_the_word(word_dict, search_word):
            of similar matches found in the list
         RETURN:
             The function returns a dictionary of two keys:
-                do_you_mean = Containing a
+                do_you_mean > Containing a
                  list of possible matches to the sugested word.
-                match = Contains a string value of the match found, it is empty string
+                match > Contains a string value of the match found, it is empty string
                  if no matches are found.
     """
-    results = {"do_you_mean": [], "match": ""}
+
     i = 0
     total = 0
     do_you_mean = []
@@ -48,7 +54,7 @@ def search_the_word(word_dict, search_word):
 
         if percentage_score == 100:
             match = word
-        elif (percentage_score >=50) and (percentage_score < 100) and (len(search_word) == ((len(word)+2) or (len(word)-2))):
+        elif (percentage_score >=45) and (percentage_score != 100) and (len(search_word) == (len(word)+3) or (len(word)-3)):
             do_you_mean.append(word)
         elif percentage_score <=10:
             pass
@@ -58,10 +64,14 @@ def search_the_word(word_dict, search_word):
         total = 0
 
     # print the list of close words OR any match found
-##    print("do you mean :: ", do_you_mean)
-##    print("match :: ", match)
+    print("do you mean :: ", do_you_mean)
+    print("match :: ", match)
 
     results["do_you_mean"] = do_you_mean
     results["match"] = match
 
     return results
+
+"""call the function"""
+
+search_the_word(word_dict, search_word)
